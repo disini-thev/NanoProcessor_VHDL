@@ -10,18 +10,28 @@ end PROM;
 architecture Behavioral of PROM is
 
 type rom_type is array (0 to 7) of std_logic_vector(11 downto 0);
- 
- signal Program_Rom : rom_type := (
+    signal Program_Rom : rom_type := (
    --stored instructions (indexing from 0 - 7)
-    "100010000001",  --MOVI R1,1   10 001 000 0001     881
-    "100100000010",  --MOVI R2,2   10 010 000 0010     901  
-    "100110000011",  --MOVI R3,3   10 011 000 0011     0a0
+    "100010001010",  --MOVI R1,10   10 001 000 1010     88a 0111 damma
+    "100100000001",  --MOVI R2,1    10 010 000 0001     901  
+    "010100000000",  --NEG R2       01 010 0000000      500
     "000010100000",  --ADD R1,R2    00 001 010 0000     0a0
-    "000010110000",  --ADD R1,R3    00 001 011 0000     0a0
-    "110000000111",  --JZR R0, 7 ; If R0 = 0 jump to line 7  11 000 0000 111    c00
+    "110010000111",  --JZR R1, 7 ; If R1 = 0 jump to line 7  11 001 0000 111    c80
+    "110000000011",   --JZR R0, 3 ; If R0 = 0 jump to line 3  11 000 0000 011    c03
     "000000000000",
     "000000000000"
 );
+--    signal Program_Rom : rom_type := (
+--   --stored instructions (indexing from 0 - 7)
+--    "100010000001",  --MOVI R1,1   10 001 000 0001     881
+--    "100100000010",  --MOVI R2,2   10 010 000 0010     901  
+--    "100110000011",  --MOVI R3,3   10 011 000 0011     0a0
+--    "000010100000",  --ADD R1,R2    00 001 010 0000     0a0
+--    "000010110000",  --ADD R1,R3    00 001 011 0000     0a0
+--    "110000000111",  --JZR R0, 7 ; If R0 = 0 jump to line 7  11 000 0000 111    c00
+--    "000000000000",
+--    "000000000000"
+--);
 
 begin
 
